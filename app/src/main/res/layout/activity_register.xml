@@ -42,7 +42,7 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- Full Name -->
+            <!-- Full Name testing-->
             <EditText
                 android:id="@+id/RegFullName"
                 android:layout_width="match_parent"
