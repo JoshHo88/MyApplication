@@ -102,16 +102,5 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Optional Register Link -->
-    <TextView
-        android:id="@+id/textRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Don't have an account? Register"
-        android:textColor="#2980B9"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin_Login"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

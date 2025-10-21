@@ -35,6 +35,15 @@
             android:name=".Register"
             android:exported="false" />
         <activity
+            android:name=".Dashboard" />
+
+        <activity
+            android:name=".LastAssessment" />
+
+        <activity
+            android:name=".AIresult" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

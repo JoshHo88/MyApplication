@@ -24,7 +24,7 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register); // make sure your XML file is named correctly
+        setContentView(R.layout.activity_register); // make sure your XML file name is correct
 
         inputName = findViewById(R.id.RegFullName);
         inputEmail = findViewById(R.id.RegEmail);
@@ -44,8 +44,11 @@ public class Register extends AppCompatActivity {
                     return;
                 }
 
-                // Insert new user into Supabase
-                insertUserToSupabase(nameStored, emailStored, passwordStored);
+                // ✅ Hash password before saving to Supabase
+                String hashedPassword = PasswordHasher.hashPassword(passwordStored);
+
+                // Insert new user into Supabase with hashed password
+                insertUserToSupabase(nameStored, emailStored, hashedPassword);
             }
         });
     }
@@ -56,8 +59,8 @@ public class Register extends AppCompatActivity {
         // Create a user object matching your Supabase table structure
         User newUser = new User();
         newUser.email = email;
-        newUser.password = password;
-        newUser.created_at = null; // Supabase will auto-fill timestamp
+        newUser.password = password;  // already hashed
+        newUser.created_at = null; // Supabase auto-fills timestamp
         newUser.id = null; // auto-generated UUID
 
         // Wrap single user in a list because Supabase expects an array for inserts
@@ -72,6 +75,7 @@ public class Register extends AppCompatActivity {
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(Register.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+
                     // Go back to main activity or login screen
                     Intent intent = new Intent(Register.this, MainActivity.class);
                     startActivity(intent);

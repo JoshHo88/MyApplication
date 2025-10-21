@@ -6,15 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class PatientsVitalSigns extends AppCompatActivity {
 
-    Button btnVitalNext;
+    Button btnVitalNext, btnVitalBack;
     EditText inputHeartRate, inputBloodPressure, inputCholesterol;
 
     @Override
@@ -35,7 +31,16 @@ public class PatientsVitalSigns extends AppCompatActivity {
                 String bloodPressureStored = inputBloodPressure.getText().toString();
                 String CholesterolStored = inputCholesterol.getText().toString();
 
-                Intent intent = new Intent(PatientsVitalSigns.this, Result.class);
+                Intent intent = new Intent(PatientsVitalSigns.this, Dashboard.class);
+                startActivity(intent);
+            }
+        });
+
+        btnVitalBack = findViewById(R.id.btnRestultsBack);
+        btnVitalBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PatientsVitalSigns.this, Dashboard.class);
                 startActivity(intent);
             }
         });
