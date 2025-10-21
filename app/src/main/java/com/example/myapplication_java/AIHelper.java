@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class AIHelper {
 
     // 🔑 Replace with your valid OpenRouter key
-    private static final String OPENROUTER_API_KEY = "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";  // your full key here
+    private static final String OPENROUTER_API_KEY = "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";  // your full key here
     private static final String OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
     private static final String MODEL = "deepseek/deepseek-chat";
 

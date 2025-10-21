@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC"
+    tools:context=".ChatbotActivity">
+
+    <!-- Back Button -->
+    <Button
+        android:id="@+id/btnBackChat"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="Back"
+        android:textSize="20sp"
+        android:textColor="@color/blue"
+        android:backgroundTint="#E2E8F0"
+        android:elevation="3dp"
+        app:cornerRadius="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp" />
+
+    <!-- Header -->
+    <TextView
+        android:id="@+id/tvChatHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Personal Medical Advisor"
+        android:textColor="#1E293B"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/btnBackChat"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Chat Display Area -->
+    <ScrollView
+        android:id="@+id/scrollViewChat"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@id/tvChatHeader"
+        app:layout_constraintBottom_toTopOf="@id/chatInputLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/chatContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:dividerPadding="8dp" />
+    </ScrollView>
+
+    <!-- Input Area -->
+    <LinearLayout
+        android:id="@+id/chatInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:background="#FFFFFF"
+        android:elevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <EditText
+            android:id="@+id/etUserInput"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:hint="Type your message..."
+            android:backgroundTint="#CBD5E1"
+            android:textColor="#1E293B"
+            android:textColorHint="#94A3B8"
+            android:paddingHorizontal="16dp"
+            android:inputType="textMultiLine"
+            android:background="@drawable/edittext_rounded_bg"/>
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:text="Send"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#2563EB"
+            app:cornerRadius="12dp"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

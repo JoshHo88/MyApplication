@@ -7,23 +7,22 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Result extends AppCompatActivity {
+public class Profile extends AppCompatActivity {
 
-    Button btnresultBack;
+    Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result);
+        setContentView(R.layout.activity_profile);
 
-        btnresultBack = findViewById(R.id.btnBackChat);
-        btnresultBack.setOnClickListener(new View.OnClickListener() {
+        btnBack = findViewById(R.id.btnProfileBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Result.this, Dashboard.class);
+                Intent intent = new Intent(Profile.this, Dashboard.class);
                 startActivity(intent);
             }
         });
-
     }
 }

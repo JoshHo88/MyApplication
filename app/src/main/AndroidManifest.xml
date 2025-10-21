@@ -44,6 +44,16 @@
             android:name=".AIresult" />
         <activity
             android:name=".RecentVital" />
+        <activity
+            android:name=".History"
+            android:exported="true" />
+        <activity
+            android:name=".Profile"/>
+        <activity
+            android:name=".ChatBot"/>
+        <activity
+            android:name=".PatientDetailsUpdate"/>
+
 
         <activity
             android:name=".MainActivity"

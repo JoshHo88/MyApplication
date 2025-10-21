@@ -9,16 +9,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RecentVital extends AppCompatActivity {
+public class History extends AppCompatActivity {
 
-    Button btnVitalsBack;
+    Button btnBackHistory;
     TextView tvPatientAge, tvPatientGender, tvPatientWeight, tvPatientHeight, tvPatientSmoker,
             tvPatientHeartDisease, tvPatientDiabetes, tvPatientHypertension;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recent_vitals);
+        setContentView(R.layout.view_history);
 
         tvPatientAge = findViewById(R.id.tvPatientAge);
         tvPatientGender = findViewById(R.id.tvPatientGender);
@@ -31,11 +31,11 @@ public class RecentVital extends AppCompatActivity {
 
         loadPatientData();
 
-        btnVitalsBack = findViewById(R.id.btnBackVitals);
-        btnVitalsBack.setOnClickListener(new View.OnClickListener() {
+        btnBackHistory = findViewById(R.id.btnHistoryBack);
+        btnBackHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RecentVital.this, Dashboard.class);
+                Intent intent = new Intent(History.this, Dashboard.class);
                 startActivity(intent);
             }
         });

@@ -7,23 +7,22 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Result extends AppCompatActivity {
+public class ChatBot extends AppCompatActivity {
 
-    Button btnresultBack;
+    Button btnChatBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result);
+        setContentView(R.layout.chat_bot);
 
-        btnresultBack = findViewById(R.id.btnBackChat);
-        btnresultBack.setOnClickListener(new View.OnClickListener() {
+        btnChatBack = findViewById(R.id.btnBackChat);
+        btnChatBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Result.this, Dashboard.class);
+                Intent intent = new Intent(ChatBot.this, Dashboard.class);
                 startActivity(intent);
             }
         });
-
     }
 }

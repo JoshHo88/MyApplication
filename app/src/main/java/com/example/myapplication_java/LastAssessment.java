@@ -9,33 +9,31 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RecentVital extends AppCompatActivity {
+public class LastAssessment extends AppCompatActivity {
 
-    Button btnVitalsBack;
+    Button btnBack;
     TextView tvPatientAge, tvPatientGender, tvPatientWeight, tvPatientHeight, tvPatientSmoker,
             tvPatientHeartDisease, tvPatientDiabetes, tvPatientHypertension;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recent_vitals);
+        setContentView(R.layout.last_assessment);
 
         tvPatientAge = findViewById(R.id.tvPatientAge);
         tvPatientGender = findViewById(R.id.tvPatientGender);
         tvPatientWeight = findViewById(R.id.tvPatientWeight);
         tvPatientHeight = findViewById(R.id.tvPatientHeight);
         tvPatientSmoker = findViewById(R.id.tvPatientSmoker);
-        tvPatientHeartDisease = findViewById(R.id.tvPatientHeartDisease);
-        tvPatientDiabetes = findViewById(R.id.tvPatientDiabetes);
         tvPatientHypertension = findViewById(R.id.tvPatientHypertension);
 
         loadPatientData();
 
-        btnVitalsBack = findViewById(R.id.btnBackVitals);
-        btnVitalsBack.setOnClickListener(new View.OnClickListener() {
+        btnBack = findViewById(R.id.btnAssessmentBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RecentVital.this, Dashboard.class);
+                Intent intent = new Intent(LastAssessment.this, Dashboard.class);
                 startActivity(intent);
             }
         });

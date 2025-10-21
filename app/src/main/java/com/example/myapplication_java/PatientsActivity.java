@@ -5,39 +5,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class PatientsActivity extends AppCompatActivity {
 
-    Button btnPatientActivityNext, btnCheckActivity;
+    public static final String EXTRA_AI_RESPONSE = "com.example.myapplication_java.AI_RESPONSE";
+
+    Button btnCheckActivity;
     EditText inputActivity, inputDuration, inputCalories, inputDate, inputFood;
-    TextView aiResponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patients_activity);
 
-        // Patient input fields
         inputActivity = findViewById(R.id.patientActivityType);
         inputDuration = findViewById(R.id.patientDuration);
         inputCalories = findViewById(R.id.patientCalories);
         inputDate = findViewById(R.id.patientDate);
         inputFood = findViewById(R.id.patientFood);
 
-        // Next button (existing navigation)
-        btnPatientActivityNext = findViewById(R.id.btnPatientActivityNext);
-        btnPatientActivityNext.setOnClickListener(view -> {
-            Intent intent = new Intent(PatientsActivity.this, PatientsVitalSigns.class);
-            startActivity(intent);
-        });
-
-        // --- AI Activity Check section ---
         btnCheckActivity = findViewById(R.id.btnCheckActivity);
-        aiResponse = findViewById(R.id.aiResponse);
 
         btnCheckActivity.setOnClickListener(v -> {
             String activity = inputActivity.getText().toString().trim();
@@ -46,14 +36,35 @@ public class PatientsActivity extends AppCompatActivity {
             String date = inputDate.getText().toString().trim();
             String food = inputFood.getText().toString().trim();
 
-            if (activity.isEmpty() || duration.isEmpty() || calories.isEmpty() || date.isEmpty()) {
-                Toast.makeText(PatientsActivity.this, "Please fill in all fields before checking.", Toast.LENGTH_SHORT).show();
+            boolean hasError = false;
+            if (activity.isEmpty()) {
+                inputActivity.setError("This field is required");
+                hasError = true;
+            }
+            if (duration.isEmpty()) {
+                inputDuration.setError("This field is required");
+                hasError = true;
+            }
+            if (calories.isEmpty()) {
+                inputCalories.setError("This field is required");
+                hasError = true;
+            }
+            if (date.isEmpty()) {
+                inputDate.setError("This field is required");
+                hasError = true;
+            }
+            if (food.isEmpty()) {
+                inputFood.setError("This field is required");
+                hasError = true;
+            }
+
+            if (hasError) {
+                Toast.makeText(PatientsActivity.this, "Please fill in all required fields", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            aiResponse.setText("Analyzing activity...");
+            Toast.makeText(PatientsActivity.this, "Analyzing activity, please wait...", Toast.LENGTH_LONG).show();
 
-            // Build a smart prompt for the AI
             String prompt = "Analyze this patient’s activity:\n" +
                     "Activity: " + activity + "\n" +
                     "Duration: " + duration + " minutes\n" +
@@ -62,10 +73,14 @@ public class PatientsActivity extends AppCompatActivity {
                     "Food intake: " + food + "\n\n" +
                     "Tell me if this is a good activity for the patient and suggest improvements.";
 
-            // Run AI call on a background thread
             new Thread(() -> {
                 String answer = AIHelper.askAI(prompt);
-                runOnUiThread(() -> aiResponse.setText(answer));
+
+                runOnUiThread(() -> {
+                    Intent intent = new Intent(PatientsActivity.this, AIresult.class);
+                    intent.putExtra(EXTRA_AI_RESPONSE, answer);
+                    startActivity(intent);
+                });
             }).start();
         });
     }

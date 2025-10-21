@@ -3,23 +3,22 @@ package com.example.myapplication_java;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RecentVital extends AppCompatActivity {
+public class AIresult extends AppCompatActivity {
 
-    Button btnVitalsBack;
+    TextView tvAIResponse;
     TextView tvPatientAge, tvPatientGender, tvPatientWeight, tvPatientHeight, tvPatientSmoker,
             tvPatientHeartDisease, tvPatientDiabetes, tvPatientHypertension;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recent_vitals);
+        setContentView(R.layout.activity_result);
 
+        tvAIResponse = findViewById(R.id.aiResponse);
         tvPatientAge = findViewById(R.id.tvPatientAge);
         tvPatientGender = findViewById(R.id.tvPatientGender);
         tvPatientWeight = findViewById(R.id.tvPatientWeight);
@@ -29,16 +28,21 @@ public class RecentVital extends AppCompatActivity {
         tvPatientDiabetes = findViewById(R.id.tvPatientDiabetes);
         tvPatientHypertension = findViewById(R.id.tvPatientHypertension);
 
+        // Load and display patient data
         loadPatientData();
 
-        btnVitalsBack = findViewById(R.id.btnBackVitals);
-        btnVitalsBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RecentVital.this, Dashboard.class);
-                startActivity(intent);
-            }
-        });
+        // Get the Intent that started this activity
+        Intent intent = getIntent();
+
+        // Get the AI result string using the key defined in PatientsActivity
+        String aiResponseText = intent.getStringExtra(PatientsActivity.EXTRA_AI_RESPONSE);
+
+        // Check if the string is valid and set the TextView
+        if (aiResponseText != null && !aiResponseText.isEmpty()) {
+            tvAIResponse.setText(aiResponseText);
+        } else {
+            tvAIResponse.setText("Error: Could not retrieve AI analysis result.");
+        }
     }
 
     private void loadPatientData() {
