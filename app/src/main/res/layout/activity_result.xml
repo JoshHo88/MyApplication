@@ -1,149 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
-    tools:context=".Result">
+    android:background="#F0F4F8"
+    tools:context=".HealthSummary">
 
     <!-- Header -->
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tvHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Result Summary"
+        android:text="Health Summary"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:textColor="#2C3E50"
+        android:textColor="#34495E"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="70dp" />
+        android:layout_marginTop="60dp" />
 
-    <!-- Result Card -->
+    <!-- Health Summary Card -->
     <androidx.cardview.widget.CardView
-        android:id="@+id/resultCard"
+        android:id="@+id/healthCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="40dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
-        android:backgroundTint="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeader"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#FFFFFF">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp"
-            android:gravity="center_horizontal">
+            android:padding="24dp">
 
-            <!-- Score Section -->
+            <!-- Patient Info -->
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/tvPatientHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Score:"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#2C3E50"
-                android:layout_marginBottom="4dp" />
-
-            <TextView
-                android:id="@+id/tvScoreValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="85%"
-                android:textSize="22sp"
-                android:textColor="#2E86DE"
-                android:layout_marginBottom="16dp" />
-
-            <!-- Risk Factor -->
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Risk Factor:"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#2C3E50"
-                android:layout_marginBottom="4dp" />
-
-            <TextView
-                android:id="@+id/tvRiskValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Moderate Risk"
+                android:text="Patient Information"
                 android:textSize="20sp"
-                android:textColor="#E67E22"
-                android:layout_marginBottom="16dp" />
-
-            <!-- Recommendation -->
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Recommendation:"
-                android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="#2C3E50"
-                android:layout_marginBottom="4dp" />
+                android:textColor="#2E4053"
+                android:layout_marginBottom="6dp" />
 
             <TextView
-                android:id="@+id/tvRecommendation"
+                android:id="@+id/tvPatientInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Schedule a follow-up consultation and maintain a balanced diet."
+                android:text="Name: John Doe\nAge: 45\nGender: Male"
                 android:textSize="16sp"
-                android:textColor="#34495E"
-                android:gravity="center"
+                android:textColor="#5D6D7E"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Vital Signs -->
+            <TextView
+                android:id="@+id/tvVitalsHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recent Vital Signs"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#2E4053"
+                android:layout_marginBottom="6dp" />
+
+            <TextView
+                android:id="@+id/tvVitalsInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Blood Pressure: 120/80 mmHg\nHeart Rate: 72 bpm\nTemperature: 36.8°C"
+                android:textSize="16sp"
+                android:textColor="#5D6D7E"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Last Assessment -->
+            <TextView
+                android:id="@+id/tvAssessmentHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Assessment"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#2E4053"
+                android:layout_marginBottom="6dp" />
+
+            <TextView
+                android:id="@+id/tvAssessmentInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Summary: Normal cardiovascular function observed.\nFollow-up: 3 months."
+                android:textSize="16sp"
+                android:textColor="#5D6D7E"
+                android:layout_marginBottom="16dp" />
+
+            <!-- AI Summary -->
+            <TextView
+                android:id="@+id/tvAISummaryHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AI Summary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#2E4053"
+                android:layout_marginBottom="6dp" />
+
+            <TextView
+                android:id="@+id/tvAISummaryInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="AI predicts a low risk of heart complications (92% confidence)."
+                android:textSize="16sp"
+                android:textColor="#5D6D7E"
                 android:layout_marginBottom="8dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- New Patient Button -->
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:text="New Patient"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#2E86DE"
-        app:cornerRadius="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/resultCard"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="60dp"
-        android:layout_marginTop="30dp" />
-
     <!-- Back Button -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRestultsBack"
+        android:id="@+id/btnBack"
         android:layout_width="0dp"
-        android:layout_height="54dp"
+        android:layout_height="55dp"
         android:layout_marginHorizontal="60dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="25dp"
         android:text="Back"
         android:textAllCaps="false"
-        android:textColor="#2E86DE"
         android:textStyle="bold"
+        android:textColor="#2E86DE"
         app:backgroundTint="#FFFFFF"
         app:cornerRadius="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.541"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
-        app:layout_constraintVertical_bias="0.194"
         app:strokeColor="#2E86DE"
-        app:strokeWidth="2dp" />
-
+        app:strokeWidth="2dp"
+        app:layout_constraintTop_toBottomOf="@+id/healthCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

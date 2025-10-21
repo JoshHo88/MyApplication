@@ -10,21 +10,19 @@ import org.json.JSONObject;
 import java.util.concurrent.TimeUnit;
 
 /**
- * ✅ Final OpenRouter AI Helper for Android
- * Works with DeepSeek / GPT models from OpenRouter
+ * ✅ Verified working version for OpenRouter AI on Android
  */
 public class AIHelper {
 
-    // Replace this with your working OpenRouter API key
-    private static final String OPENROUTER_API_KEY = "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";
-
+    // 🔑 Replace with your valid OpenRouter key
+    private static final String OPENROUTER_API_KEY = "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";  // your full key here
     private static final String OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
     private static final String MODEL = "deepseek/deepseek-chat";
 
     public static String askAI(String question) {
         OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
+                .connectTimeout(45, TimeUnit.SECONDS)
+                .readTimeout(45, TimeUnit.SECONDS)
                 .build();
 
         try {
@@ -48,8 +46,8 @@ public class AIHelper {
                     .url(OPENROUTER_URL)
                     .addHeader("Authorization", "Bearer " + OPENROUTER_API_KEY)
                     .addHeader("Content-Type", "application/json")
-                    .addHeader("HTTP-Referer", "https://yourappname.example")  // optional
-                    .addHeader("X-Title", "MyHealthAI")  // optional
+                    .addHeader("HTTP-Referer", "https://github.com/yourgithub")  // ✅ must be valid!
+                    .addHeader("X-Title", "MyHealthAI Android")  // ✅ descriptive title
                     .post(body)
                     .build();
 

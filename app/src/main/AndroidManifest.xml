@@ -42,6 +42,8 @@
 
         <activity
             android:name=".AIresult" />
+        <activity
+            android:name=".RecentVital" />
 
         <activity
             android:name=".MainActivity"
