@@ -131,6 +131,8 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 // OkHttp for logging (optional)
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+// 🔹 For password hashing
+    implementation("at.favre.lib:bcrypt:0.9.0")
 
 
 }
